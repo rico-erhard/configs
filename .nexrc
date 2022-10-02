@@ -1,0 +1,49 @@
+" nexrc
+"set exrc
+"set number
+
+set autowrite
+set wraplen=67
+
+set shiftwidth=2
+set tabstop=2
+set autoindent
+
+set ruler
+set leftright
+set showmatch
+set showmode
+set verbose
+
+set searchincr
+set ignorecase
+set wrapscan
+
+set filec=\	
+set cedit=\	
+
+" autocompletion maps
+map!  mea mabmp"ay'a:	o?\<"ap$n
+map!  mea mabmp"ay'a:	o/\<"ap$N
+map   "pye'pd'a"ppXe
+map   "pye'pd'a"ppXe
+
+" other maps 
+map ' `
+map g 1G
+map q :	
+"map t dwwP
+
+" function key maps
+map! #1 OP
+map #1 :r !date +\%y\%m\%d-\%H:\%MkJ
+map #4 0y$ :O:r pi!lynx_dump 0
+" !lynx -dump -width=67 -display_charset=utf8
+map #5 :	o:.,$ !sed 's/^/> /'
+map #6 :	o:.,$ !sed 's/^> //'
+map #7 :	o:.,$ !fold -s -w 80
+map #8 :	o:.,$ !fold -s -w 67
+
+" tags
+map  lbye:O:tag p
+set tags=./tags

@@ -1,0 +1,70 @@
+# tcshrc
+#------------------------------------------------------------------
+set path = (/usr/local/bin /usr/pkg/bin /bin /usr/bin /bin)
+set path = ($path ${HOME}/.bin)
+set path = ($path /usr/X11R7/bin /usr/local/sbin)
+set path = ($path /usr/local/sbin /usr/pkg/sbin /usr/sbin /sbin)
+
+setenv BLOCKSIZE 1k
+# A righteous umask
+umask 22
+
+setenv LANG     "en_US.UTF-8"
+setenv LC_ALL    "en_US.UTF-8"
+
+setenv EDITOR        vi
+setenv PAGER         less
+
+setenv LESS          "-Ri -x4"
+setenv GREP_OPTIONS  "-i"
+
+# prompt
+#---------
+if ($?prompt) then
+	# An interactive shell -- set some stuff up
+	#set prompt = "%?)%N@%M in %~ nach %P mit %j jobs:\n"
+	set prompt = "_______\n"
+	set noding
+	#set promptchars = "%#"
+	set filec
+	set history = 1000
+	set savehist = (1000 merge)
+	set autolist = ambiguous
+	# Use history to aid expansion
+	set autoexpand
+	set autorehash
+	set mail = (/var/mail/$USER)
+	if ( $?tcsh ) then
+		bindkey -v
+		#bindkey "^W" backward-delete-word
+		#bindkey -k up history-search-backward
+		#bindkey -k down history-search-forward
+		#bindkey "^b" backward-word
+		#bindkey "^w" forward-word
+	endif
+	#pal -r 7
+endif
+
+# aliases
+#---------
+alias bc             "bc -l"
+alias cal            "cal -d 1"
+alias cl             "clear && ls -1F"
+alias d              "dirs -v"
+alias j              "jobs"
+alias klipp          "tmux show-buffer | xsel -bi"
+alias ls             "ls -F"
+alias tail66         "tail -n 66 -f $1"
+alias tvlm           "tail -n 80 -f /var/log/messages" 
+alias nw             "tmux neww"
+alias ts             "tmux show-buffer"
+alias tsx             "tmux show-buffer | xsel -bi"
+alias p              "pwd"
+alias pd             "pushd -v"
+alias po             "popd"
+alias sp             "tmux splitw"
+alias sph            "tmux splitw -h"
+alias t2             "sph && tmux select-layout even-horizontal"
+alias t3             "sph && sph && tmux select-layout even-horizontal"
+alias v3             "sph && sph && tmux select-layout main-vertical"
+alias xbi             "xsel -bi"
